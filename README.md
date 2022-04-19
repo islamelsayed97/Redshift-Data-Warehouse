@@ -104,4 +104,29 @@ The use tables are the **songplay_fact**, **time_dim**, **user_dim**, **song_dim
  | location | VARCHAR      |     | |
  | user_agent | VARCHAR     |     | |
 
-<img src="images/database.PNG">
+<img src="images/database.png">
+![ERD Diagram](./images/database.PNG)
+
+## File Description
+
+- **dwh.cfg:**
+This is the configuration file that stores aws key, aws secrets, details about the aws cluster, IAM role and the location of data in S3. Before you start the project you need to set these configurations with your AWS credentials .
+- **sql_queries.py:**
+This file contains the all sql queries used to create tables in Redshift and ETL data from the S3 Bucket into the staging table and then insert data from the staging table into the data warehouse tables.
+- **create_redshift_cluster.py:**
+This file is used to connect to aws and create the Redshift cluster. **Remember** before running this file the aws key and secret and Redshift cluster details must be added to the `dwh.cfg` file. **Important Note** you don't have to set IAM Role `arn` and cluster `host` in the configuration file as by running `create_redshift_cluster.py` file, it will set them automatically after the cluster is created. 
+- **create_tables.py:**
+This file is used to delete all tables from the cluster, then create the staging and data warehouse tables in Redshift cluster. It will import the create table queries from the sql_queries.py to do that.
+- **etl.py:**
+This file is used to transfer data from S3 Buckets to staging tables and then to insert data from the staging tables into the data warehouse tables. This file will import the copy and insert commands from the sql_queries.py script.
+- **destroy_redshift_cluster:**
+Finally, we need to delete the Redshift cluster to avoid excessive charges. this is the role of this file.
+
+## Project Execution
+
+1. First step as mentioned above you must put your credentials in the configurations file `dwh.cfg`, you have to set them all except `arn` and `host` those will done by running `create_redshift_cluster.py` file.
+2. Second step is to create the Redshift cluster by running `create_redshift_cluster.py` file by typing `python create_redshift_cluster.py` command in the command line.
+3. Third step is to create the staging and data warehouse tables, and this will done by running `create_tables.py` file by typing `python create_tables.py` command in the command line.
+4. Forth step is copy the data from the S3 bucket to the staging tables and transform them into the data warehouse tables. `etl.py` file will do this for you after typing `python etl.py` command in the command line.
+5. Fifth step is to connect on this Redshift data warehouse and build an analytics dashboard, you can find the dashboard [here](/dashboard/).
+6. Sixth and last step, we need to delete the Redshift cluster to avoid excessive charges, and this is what [destroy_redshift_cluster](/destroy_redshift_cluster.py/) will do. To execute this file use `python destroy_redshift_cluster.py` command 
