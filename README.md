@@ -47,7 +47,7 @@ There are two staging tables **staging_events** and the **staging_songs** tables
 
 
 
-The use tables are the **songplay_fact**, **time_dim**, **user_dim**, **song_dim**, and **artist_dim** tables.  These tables are in the
+The data warehouse tables are the **songplay**, **time**, **user**, **song**, and **artist** tables.  As shown below
 
 <img src="images/database.png">
 
