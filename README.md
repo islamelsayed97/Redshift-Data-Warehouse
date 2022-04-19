@@ -69,8 +69,16 @@ Finally, we need to delete the Redshift cluster to avoid excessive charges. this
 ## Project Execution
 
 1. First step as mentioned above you must put your credentials in the configurations file [dwh.cfg](/dwh.cfg/), you have to set them all except `arn` and `host` those will done by running `create_redshift_cluster.py` file.
-2. Second step is to create the Redshift cluster by running [create_redshift_cluster.py](/create_redshift_cluster.py/) file by typing `python create_redshift_cluster.py` command in the command line.
-3. Third step is to create the staging and data warehouse tables, and this will done by running [create_tables.py](/create_tables.py/) file by typing `python create_tables.py` command in the command line.
-4. Forth step is copy the data from the S3 bucket to the staging tables and transform them into the data warehouse tables. [etl.py](/etl.py/) file will do this for you after typing `python etl.py` command in the command line.
+2. Second step is to create the Redshift cluster by running [create_redshift_cluster.py](/create_redshift_cluster.py/) file by running `python create_redshift_cluster.py` command in the command line.
+3. Third step is to create the staging and data warehouse tables, and this will done by running [create_tables.py](/create_tables.py/) file by running `python create_tables.py` command in the command line.
+4. Forth step is copy the data from the S3 bucket to the staging tables and transform them into the data warehouse tables. [etl.py](/etl.py/) file will do this for you after running `python etl.py` command in the command line.
 5. Fifth step is to connect on this Redshift data warehouse and build an analytics dashboard, you can find the dashboard [here](/dashboard/).
 6. Sixth and last step, we need to delete the Redshift cluster to avoid excessive charges, and this is what [destroy_redshift_cluster.py](/destroy_redshift_cluster.py/) will do. To execute this file use `python destroy_redshift_cluster.py` command 
+
+## Power BI dashboard
+
+Here is a screenshot of my dashboard, and you can find the power BI file [here](/dashboard/).
+<img src="dashboard/Spotify_dashboard.png">
+
+
+
