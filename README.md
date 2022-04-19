@@ -2,6 +2,14 @@
 
 In this project I built an ETL pipeline that extracts data from AWS S3, stages them in AWS Redshift, and transforms data into a set of dimensional tables for analytics, then I created a dashboard using Power BI
 
+## Prerequisites
+
+- AWS Redshift
+- AWS S3
+- AWS IAM Role
+- Python Boto3
+- Power BI
+
 ## Database Schema
 The data consists of 5 tables. This design focuses on the songplay table (fact table).  The dimensional tables are time, users, songs, and artists help to provide context and additional details for the songplay table.
 
