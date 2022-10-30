@@ -1,4 +1,10 @@
-# Data Warehousing with Redshift
+<p align="center" >
+ <h1>Data Warehousing with Redshift</h1>
+</p>
+
+<div align="center" >
+ <img src="./images/aws_s3_to_redshift.png" />
+</div>
 
 In this project I built an ETL pipeline that extracts data from AWS S3, stages them in AWS Redshift, and transforms data into a set of dimensional tables for analytics, then I created a dashboard using Power BI
 
